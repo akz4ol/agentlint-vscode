@@ -1,0 +1,93 @@
+{
+  "name": "agentlint",
+  "displayName": "AgentLint",
+  "description": "Security scanner for AI agent configurations (Claude Code, Cursor, CLAUDE.md)",
+  "version": "0.1.0",
+  "publisher": "agentlint",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akz4ol/agentlint-vscode"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "agent",
+    "security",
+    "linter",
+    "claude",
+    "cursor"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "workspaceContains:.claude/**",
+    "workspaceContains:.cursorrules",
+    "workspaceContains:CLAUDE.md"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentlint.scan",
+        "title": "AgentLint: Scan Workspace"
+      },
+      {
+        "command": "agentlint.scanFile",
+        "title": "AgentLint: Scan Current File"
+      }
+    ],
+    "configuration": {
+      "title": "AgentLint",
+      "properties": {
+        "agentlint.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable AgentLint diagnostics"
+        },
+        "agentlint.failOn": {
+          "type": "string",
+          "default": "high",
+          "enum": ["none", "low", "medium", "high"],
+          "description": "Minimum severity to show as errors"
+        },
+        "agentlint.warnOn": {
+          "type": "string",
+          "default": "medium",
+          "enum": ["none", "low", "medium", "high"],
+          "description": "Minimum severity to show as warnings"
+        },
+        "agentlint.configPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to agentlint.yaml config file"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "agentlint": "^0.1.0"
+  }
+}
