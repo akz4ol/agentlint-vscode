@@ -2,7 +2,7 @@
   "name": "agentlint",
   "displayName": "AgentLint",
   "description": "Security scanner for AI agent configurations (Claude Code, Cursor, CLAUDE.md)",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "agentlint",
   "icon": "images/icon.png",
   "repository": {
@@ -88,6 +88,6 @@
     "@vscode/vsce": "^2.22.0"
   },
   "dependencies": {
-    "agentlint": "^0.1.0"
+    "agentlint": "^0.3.0"
   }
 }
